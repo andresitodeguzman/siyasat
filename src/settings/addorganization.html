@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed|Pacifico&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+        <style>body { width:100%; }</style>
     </head>
     <body>
         <nav class="z-depth-0">
@@ -38,7 +38,7 @@
                             <span>Whitelist</span>
                         </a>
                     </li>
-                    <li class="sidemenu-item">
+                    <li class="sidemenu-item active">
                     	<a href="preferences.html">
                         	<svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M13 2V6L11 7L8 4L4 8L7 11L6 13H2V19H6L7 21L4 24L8 28L11 25L13 26V30H19V26L21 25L24 28L28 24L25 21L26 19H30V13H26L25 11L28 8L24 4L21 7L19 6V2H13Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -47,7 +47,7 @@
                             <span>Preferences</span>
                         </a>
                     </li>
-                    <li class="sidemenu-item active">
+                    <li class="sidemenu-item">
                     	<a href="about.html">
                         	<svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M16.0001 26.6667C18.8291 26.6667 21.5422 25.5429 23.5426 23.5425C25.5429 21.5421 26.6667 18.829 26.6667 16C26.6667 13.171 25.5429 10.4579 23.5426 8.45753C21.5422 6.45714 18.8291 5.33334 16.0001 5.33334C13.1711 5.33334 10.458 6.45714 8.45761 8.45753C6.45722 10.4579 5.33341 13.171 5.33341 16C5.33341 18.829 6.45722 21.5421 8.45761 23.5425C10.458 25.5429 13.1711 26.6667 16.0001 26.6667ZM16.0001 29.3333C8.63608 29.3333 2.66675 23.364 2.66675 16C2.66675 8.63601 8.63608 2.66667 16.0001 2.66667C23.3641 2.66667 29.3334 8.63601 29.3334 16C29.3334 23.364 23.3641 29.3333 16.0001 29.3333ZM14.6667 14.6667V22.6667H17.3334V14.6667H14.6667ZM14.6667 9.33334H17.3334V12H14.6667V9.33334Z" fill="black"/>
@@ -59,16 +59,21 @@
             </div>
 			<div class="col s10">
             	<h4>
-                    About Siyasat
+                    Add an Organization
                 </h4>
-                <p>
-                    Git Stash.<br>
-                    De Guzman, Andresito; Raymundo, Stephen John; Reynier C. Tasico
-                </p>
                 <br>
-                <p>
-                    The International Fact-Checking Network (IFCN) is a unit of the Poynter Institute dedicated to bringing together fact-checkers worldwide. 
-                </p>
+                <table>
+                    <thead>
+                    	<tr>
+                        	<th>Organization</th>
+                            <th>Region/Country</th>
+                            <th>Add</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orgList">
+                    	
+                    </tbody>
+                </table>
             </div>
         </div>
         
@@ -76,3 +81,6 @@
 </html>
 <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="../assets/js/materialize.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Barlow+Condensed|Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="organizations.js"></script>

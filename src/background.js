@@ -121,11 +121,6 @@ s.browser.contextMenus.create({
     contexts: ["selection"]
 });
 
-s.browser.contextMenus.create({
-    id: "search_news",
-    title: "Search in News Sources",
-    contexts: ["selection"]
-});
 
 var submenuCreation = (parent_id, contexts, array) => {
     array.map(obj => {
@@ -149,21 +144,41 @@ submenuCreation("fact_check", ["selection"], [{
         }
     },
     {
-        id: "fact_check_mediabias",
-        title: "Check with Media Bias/Fact Check",
+        id: "fact_check_rappler",
+        title: "Check with Rappler",
         onclick: (info, tab) => {
             s.browser.tabs.create({
-                url: `https://mediabiasfactcheck.com/?s=${encodeURIComponent(info.selectionText)}`,
+                url: `https://www.rappler.com/?option=com_rappler&task=search&language=english&q=${encodeURIComponent(info.selectionText)}`,
                 active: true
             })
         }
     },
-    {
-        id: "fact_check_polygraph",
-        title: "Check with Polygraph.info",
+	{
+        id: "fact_check_snopes",
+        title: "Check with Snopes",
         onclick: (info, tab) => {
             s.browser.tabs.create({
-                url: `https://www.polygraph.info/s?tab=all&pi=1&r=any&pp=10&k=${encodeURIComponent(info.selectionText)}`,
+                url: `https://www.snopes.com/?s=${encodeURIComponent(info.selectionText)}`,
+                active: true
+            })
+        }
+    },
+	{
+        id: "fact_check_ap",
+        title: "Check with Associated Press",
+        onclick: (info, tab) => {
+            s.browser.tabs.create({
+                url: `https://www.ap.org/en-us/search?q=${encodeURIComponent(info.selectionText)}`,
+                active: true
+            })
+        }
+    },
+	{
+        id: "fact_check_factcheckorg",
+        title: "Check with FactCheck.org",
+        onclick: (info, tab) => {
+            s.browser.tabs.create({
+                url: `https://www.factcheck.org/search/?q=${encodeURIComponent(info.selectionText)}`,
                 active: true
             })
         }
@@ -177,36 +192,6 @@ submenuCreation("fact_check", ["selection"], [{
                 active: true
             })
         }
-    },
-    {
-        id: "fact_check_factcheck",
-        title: "Check with FactCheck.org",
-        onclick: (info, tab) => {
-            s.browser.tabs.create({
-                url: `https://www.factcheck.org/search/?q=${encodeURIComponent(info.selectionText)}`,
-                active: true
-            })
-        }
-    },
-    {
-        id: "fact_check_usafacts",
-        title: "Check with USAFacts",
-        onclick: (info, tab) => {
-            s.browser.tabs.create({
-                url: `https://usafacts.org/search?query=${encodeURIComponent(info.selectionText)}`,
-                active: true
-            })
-        }
     }
 ]);
 
-submenuCreation("search_news", ["selection"], [{
-    id: "search_news_ap",
-    title: "Search in Associated Press",
-    onclick: (info, tab) => {
-        s.browser.tabs.create({
-            url: `https://www.ap.org/en-us/search?q=${encodeURIComponent(info.selectionText)}`,
-            active: true
-        })
-    }
-}]);
