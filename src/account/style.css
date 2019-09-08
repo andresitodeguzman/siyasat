@@ -1,0 +1,47 @@
+* { font-family: 'Barlow Condensed', sans-serif; }
+body {
+    height: 100vh !important;
+    background-color: #FAFAFA;
+}
+h1 {
+    font-family: 'Pacifico', cursive;
+    line-height:4rem;
+}
+nav {
+    z-index:999999;
+}
+p {
+    font-size: 14pt;
+}
+div.horizontal-scroll {
+    padding-left: 40px;
+    padding-bottom: 40px;
+    overflow: auto;
+    height:inherit;
+    white-space: nowrap;
+}
+.card {
+    display:inline-block;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(150, 150, 150, 0.2);
+    font-size: 25px;
+}
+.card > .card-content > p {
+    white-space:normal;
+} 
+.card-action {
+    border-radius: 0 0 12px 12px !important;
+    background-color: #FFE600 !important;
+    text-align:center;
+    cursor: pointer;
+}
+.card-action > a {
+    color: black !important;
+    font-size: 25px;
+    margin-right:0 !important;
+}
+nav {
+    background-color: #00D8EC;
+    height: 100px;
+}
