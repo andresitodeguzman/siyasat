@@ -1,7 +1,7 @@
 <!Doctype html>
 <html>
     <head>
-        <title>Forgot Password - Siyasat</title>
+        <title>Register - Siyasat</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link type="text/css" rel="stylesheet" href="../assets/css/materialize.min.css"  media="screen,projection"/>
         <link rel="stylesheet" type="text/css" href="style.css">
@@ -38,27 +38,32 @@
                     </center>
                 </div>
                 <div class="card-content" id="withContent">
-                    <p style="text-align: center; font-size:25pt;">Forgot your Password?</p>
-                    <p style="text-align: center; font-size:18pt;">No worries, you'll be able to access your account soon.<br>But first, tell us your email.</p>
+                    <p style="text-align: center; font-size:25pt;">Welcome to Siyasat</p>
+                    <p style="text-align: center; font-size:18pt;">Please login to proceed</p>
                     <br>
                     <form>
                         <div class="input-field">
-                            <input type="text" id="email">
-                            <label for="email">Email</label>
+                            <input type="text" id="username">
+                            <label for="username">Username</label>
                         </div>
+                        <div class="input-field">
+                            <input type="password" id="password">
+                            <label for="password">Password</label>
+                        </div>
+                        <a style="font-size: 12pt; color:black;" href="./forgotpassword.html">Forgot Password? </a>
                     </form>
 
                     <div id="messageBox">
-                        <p id="messageBoxContent">An Error Occurred</p>
+                        <p id="messageBoxContent">Some text here</p>
                     </div>    
 
                 </div>
-                <div class="card-action" id="proceedButton">
-                    <a href="#!">Proceed</a>
+                <div class="card-action" id="loginButton">
+                    <a href="#!">Login</a>
                 </div>
             </div>
             <br><br>
-            <a class="btn btn-large" style="background-color: #00B5C6 !important;" href="./login.html">I already remembered my password</a>
+            <a class="btn btn-large" style="background-color: #00B5C6 !important;">Create an Account</a>
 
 
         </div>
@@ -71,4 +76,4 @@
 <script type="text/javascript" src="../assets/js/materialize.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed|Pacifico&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script src="forgotpassword.js"></script>
+<script src="register.js"></script>

@@ -21,9 +21,13 @@ $("#loginButton").click(()=>{
                 data: {
                     username: u,
                     password: p
+                },
+                success: res=>{
+                    console.log(res);
                 }
 
             }).fail((error)=>{
+                ui.input.enable();
                 ui.message.show("Please check your connection");
                 console.error({from:"Login Submission", content:error});
             });
