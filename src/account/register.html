@@ -38,10 +38,37 @@
                     </center>
                 </div>
                 <div class="card-content" id="withContent">
-                    <p style="text-align: center; font-size:25pt;">Welcome to Siyasat</p>
-                    <p style="text-align: center; font-size:18pt;">Please login to proceed</p>
+                    <p style="text-align: center; font-size:25pt;">Let's create an account for you!</p>
+                    <p style="text-align: center; font-size:18pt;">Fill in with your information and you'll be using Siyasat in no time.</p>
                     <br>
                     <form>
+                        <div class="row">
+                            <div class="col s6">
+                                <div class="input-field">
+                                    <input type="text" id="first_name">
+                                    <label for="first_name">First Name</label>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="input-field">
+                                    <input type="text" id="last_name">
+                                    <label for="last_name">Last Name</label>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="input-field">
+                                    <input type="email" id="email">
+                                    <label for="email">Email</label>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="input-field">
+                                    <select class="browser-default country" id="country">
+                                        <option selected disabled>SELECT COUNTRY</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <div class="input-field">
                             <input type="text" id="username">
                             <label for="username">Username</label>
@@ -50,7 +77,6 @@
                             <input type="password" id="password">
                             <label for="password">Password</label>
                         </div>
-                        <a style="font-size: 12pt; color:black;" href="./forgotpassword.html">Forgot Password? </a>
                     </form>
 
                     <div id="messageBox">
