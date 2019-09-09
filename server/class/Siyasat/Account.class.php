@@ -155,6 +155,22 @@ class Account {
 
     }
 
+    public function authenticate(Array $array){
+        $info = $this->getByUsername($array['username']);
+        if(!$info){
+           return array("result"=>False,"message"=>"Username is not registered"); 
+        } else {
+
+            $pw_hash = $this->getPassword($info['id']);
+            if($this->verifyPassword($pw_hash,$array['password']) == False){
+                return array("result"=>False, "message"=>"Password is incorrect");
+            } else {
+                return array("result"=>True,"message"=>"Login details are correct","user"=>$info);
+            }
+
+        }
+    }
+
 }
 
 ?>

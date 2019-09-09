@@ -23,7 +23,15 @@ $("#loginButton").click(()=>{
                     password: p
                 },
                 success: res=>{
-                    console.log(res);
+                    res = JSON.parse(res);
+                    if(res.result == true){
+                        s.browser.storage.local.set({user:res.user},()=>{
+                            window.location.replace("../settings/index.html");
+                        });
+                    } else {
+                        ui.input.enable();
+                        ui.message.show(res.message);
+                    }
                 }
 
             }).fail((error)=>{

@@ -1,11 +1,25 @@
-var data = {
+const s = {
+    browser: chrome,
+    setBrowser() {
+        return new Promise((resolve, reject) => {
+            try {
+                if (chrome) this.browser = chrome;
+                if (firefox) this.browser = firefox;
+            } finally {
+                resolve();
+            }
+        });
+    }
+}
+
+const data = {
     url: {
-        login:"https://google.com",
+        login:"http://localhost:8080/api/account/authenticate.php",
         forgotPassword:"https://google.com"
     }
 };
 
-var ui = {
+const ui = {
     message: {
         show(msg){
             $("#messageBoxContent").html(msg);
