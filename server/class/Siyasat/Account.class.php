@@ -13,6 +13,7 @@ class Account {
     public $country;
     public $username;
     public $is_blocked;
+    public $account_type;
     public $timestamp_created;
 
     function __construct($mysqli){
@@ -40,7 +41,7 @@ class Account {
         $stmt = $this->mysqli->prepare("SELECT * FROM `account` WHERE id=? LIMIT 1");
         $stmt->bind_param("i",$id);
         $stmt->execute();
-        $stmt->bind_result($id,$first_name,$last_name,$email,$country,$username,$password,$is_blocked,$timestamp_created);
+        $stmt->bind_result($id,$first_name,$last_name,$email,$country,$username,$password,$is_blocked,$account_type,$timestamp_created);
         $stmt->fetch();
 
         $array = array();
@@ -53,6 +54,7 @@ class Account {
                 "country"=>$country,
                 "username"=>$username,
                 "is_blocked"=>$is_blocked,
+                "account_type"=>$account_type,
                 "timestamp_created"=>$timestamp_created
             );
         }
@@ -64,7 +66,7 @@ class Account {
         $stmt = $this->mysqli->prepare("SELECT * FROM `account` WHERE username LIKE ? LIMIT 1");
         $stmt->bind_param("s",$username);
         $stmt->execute();
-        $stmt->bind_result($id,$first_name,$last_name,$email,$country,$username,$password,$is_blocked,$timestamp_created);
+        $stmt->bind_result($id,$first_name,$last_name,$email,$country,$username,$password,$is_blocked,$account_type,$timestamp_created);
         $stmt->fetch();
 
         $array = array();
@@ -77,6 +79,7 @@ class Account {
                 "country"=>$country,
                 "username"=>$username,
                 "is_blocked"=>$is_blocked,
+                "account_type"=>$account_type,
                 "timestamp_created"=>$timestamp_created
             );
         }
@@ -136,11 +139,12 @@ class Account {
                     $last_name = $array['last_name'];
                     $email = $array['email'];
                     $country = $array['country'];
-                    $username = $array['username'];
+                    $username = $array['username'];                    
                     $is_blocked = "";
+                    $account_type = "user";
     
-                    $stmt = $this->mysqli->prepare("INSERT INTO `account`(`first_name`,`last_name`,`email`,`country`,`username`,`password`,`is_blocked`) VALUES(?,?,?,?,?,?,?)");
-                    $stmt->bind_param("sssssss",$first_name,$last_name,$email,$country,$username,$pw_hash,$is_blocked);
+                    $stmt = $this->mysqli->prepare("INSERT INTO `account`(`first_name`,`last_name`,`email`,`country`,`username`,`password`,`is_blocked`,`account_type`) VALUES(?,?,?,?,?,?,?,?)");
+                    $stmt->bind_param("ssssssss",$first_name,$last_name,$email,$country,$username,$pw_hash,$is_blocked,$account_type);
                     if($stmt->execute()){
                         $id = $this->mysqli->insert_id;
                         $user = $this->get($id);
