@@ -45,3 +45,19 @@ nav {
     background-color: #00D8EC;
     height: 100px;
 }
+
+.btn-large {
+    width: 100%;
+    border-radius: 15px;
+    font-size: 18pt;
+}
+
+#messageBox {
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgb(255, 132, 123) !important;
+    border-radius: 12px;
+}
