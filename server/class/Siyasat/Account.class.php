@@ -126,7 +126,7 @@ class Account {
                 return array("result"=>False,"message"=>"Email already registered");
             } else {
 
-                if($array['password'] < 8){
+                if($array['password'] > 8){
                     return array("result"=>False, "message"=>"Password is too short");
                 } else {
 
@@ -142,7 +142,9 @@ class Account {
                     $stmt = $this->mysqli->prepare("INSERT INTO `account`(`first_name`,`last_name`,`email`,`country`,`username`,`password`,`is_blocked`) VALUES(?,?,?,?,?,?,?)");
                     $stmt->bind_param("sssssss",$first_name,$last_name,$email,$country,$username,$pw_hash,$is_blocked);
                     if($stmt->execute()){
-                        return array("result"=>True,"message"=>"Account created successfully", "user_id"=>$this->mysqli->insert_id);
+                        $id = $this->mysqli->insert_id;
+                        $user = $this->get($id);
+                        return array("result"=>True,"message"=>"Account created successfully", "user"=>$user);
                     } else {
                         return array("result"=>False,"message"=>"An error occurred ($stmt->error)");
                     }

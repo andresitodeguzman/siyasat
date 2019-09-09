@@ -15,7 +15,8 @@ const s = {
 const data = {
     url: {
         login:"http://localhost:8080/api/account/authenticate.php",
-        forgotPassword:"https://google.com"
+        forgotPassword:"https://google.com",
+        register:"http://localhost:8080/api/account/add.php"
     }
 };
 
@@ -292,6 +293,12 @@ data.countries = [
     ];
 
 $(document).ready(()=>{
+    s.setBrowser().then(()=>{
+        s.browser.storage.local.get(['user'],res=>{
+            if(res.user) window.location.replace("../settings/index.html");
+        });
+    });
+
     $("#messageBox").hide();
     $(".container").slideDown();
     data.countries.forEach(obj=>{
