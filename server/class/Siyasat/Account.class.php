@@ -91,11 +91,68 @@ class Account {
         return True;
     }
 
+    public function usernameExists(String $username){
+        $stmt = $this->mysqli->prepare("SELECT `username` FROM `account` WHERE username LIKE ? LIMIT 1");
+        $stmt->bind_param("s",$username);
+        $stmt->execute();
+        $stmt->bind_result($username_e);
+        $stmt->fetch();
+        if($username_e){
+            return True;
+        } else {
+            return False;
+        }
+    }
+
+    public function emailExists(String $email){
+        $stmt = $this->mysqli->prepare("SELECT `email` FROM `account` WHERE email LIKE ? LIMIT 1");
+        $stmt->bind_param("s",$email);
+        $stmt->execute();
+        $stmt->bind_result($email_e);
+        $stmt->fetch();
+
+        if($email_e){
+            return True;
+        } else {
+            return False;
+        }
+    }
+
     public function add(Array $array){
-        $pw_hash = $this->hashPassword($array['password']);
-        $stmt = $this->mysqli->prepare("INSERT INTO `account`(`first_name`,`last_name`,`email`,`country`,`username`,`password`) VALUES(?,?,?,?,?,?) LIMIT 1");
-        $stmt->bind_param("");
-        
+        if($this->usernameExists($array['username']) === True){
+            return array("result"=>False,"message"=>"Username already in use");
+        } else {
+            if($this->emailExists($array['email']) === True){
+                return array("result"=>False,"message"=>"Email already registered");
+            } else {
+
+                if($array['password'] < 8){
+                    return array("result"=>False, "message"=>"Password is too short");
+                } else {
+
+                    $pw_hash = $this->hashPassword($array['password']);
+
+                    $first_name = $array['first_name'];
+                    $last_name = $array['last_name'];
+                    $email = $array['email'];
+                    $country = $array['country'];
+                    $username = $array['username'];
+                    $is_blocked = "";
+    
+                    $stmt = $this->mysqli->prepare("INSERT INTO `account`(`first_name`,`last_name`,`email`,`country`,`username`,`password`,`is_blocked`) VALUES(?,?,?,?,?,?,?)");
+                    $stmt->bind_param("sssssss",$first_name,$last_name,$email,$country,$username,$pw_hash,$is_blocked);
+                    if($stmt->execute()){
+                        return array("result"=>True,"message"=>"Account created successfully", "user_id"=>$this->mysqli->insert_id);
+                    } else {
+                        return array("result"=>False,"message"=>"An error occurred ($stmt->error)");
+                    }
+    
+
+                }                
+
+            }
+        }
+
     }
 
 }
