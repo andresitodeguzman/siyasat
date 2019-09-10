@@ -16,6 +16,7 @@ $(document).ready(()=>{
     s.setBrowser().then(()=>{
         s.browser.storage.local.get(['user'],res=>{
             if(!res.user) window.location.replace("../account/login.html");
+            $(".first_name").html(res.user.first_name);
         });
     });
 
