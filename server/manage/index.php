@@ -1,7 +1,8 @@
 <?php
-
-
-
+session_start();
+if($_SESSION['logged_in'] == True){
+    header("Location: dashboard.php");
+}
 ?>
 <!Doctype html>
 <html>
@@ -107,6 +108,43 @@ $(document).ready(()=>{
 });
 
 $("#loginButton").click(()=>{
-    
+    ui.input.disable();
+    var u = $("#username").val();
+    var p = $("#password").val();
+
+    if(!u){
+        ui.input.enable();
+        ui.message.show("Username is Required");
+    } else {
+        if(!p){
+            ui.input.enable();
+            ui.message.show("Password is Requied");
+        } else {
+
+            $.ajax({
+                type:"POST",
+                url:"./loginprocess.php",
+                data: {
+                    username:u,
+                    password:p
+                },
+                success: res=>{
+                    console.log(res);
+                    res = JSON.parse(res);
+                    if(res.result == true){
+                        window.location.replace("dashboard.php");
+                    } else {
+                        ui.input.enable();
+                        ui.message.show(res.message);
+                    }
+                }
+            }).fail(()=>{
+                ui.input.enable();
+                ui.message.show("An error occurred");
+            });
+
+        }
+    }
+
 });
 </script>
