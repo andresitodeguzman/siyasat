@@ -96,11 +96,11 @@ s.browser.tabs.onUpdated.addListener((tid, ci, tab) => {
     var protocol = tab.url.split(":")[0];
     if(ci.status == "complete") {
         var is_b = s.isBlackListed(tab.url);
-        if(protocol == "http") {
+       /* if(protocol == "http") {
             s.browser.tabs.executeScript(tid, {
                 file: 'banner/insecure.js'
             });
-        }
+        }*/
         if(is_b.result == true) {
             if(is_b.obj.category == "blog") s.browser.tabs.executeScript(tid, { file: 'banner/blog.js' });
             if(is_b.obj.category == "opinion") s.browser.tabs.executeScript(tid, { file: 'banner/opinion.js' });

@@ -1,0 +1,140 @@
+* { font-family: 'Barlow Condensed', sans-serif; }
+body {
+    height: 100vh !important;
+    background-color: #FAFAFA;
+}
+h1 {
+    font-family: 'Pacifico', cursive;
+    line-height:4rem;
+}
+nav {
+    z-index:999999;
+}
+p {
+    font-size: 14pt;
+}
+div.horizontal-scroll {
+    padding-left: 40px;
+    padding-bottom: 40px;
+    overflow: auto;
+    height:inherit;
+    white-space: nowrap;
+}
+
+.card {
+    display:inline-block;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(150, 150, 150, 0.2);
+    font-size: 17px;
+}
+.card > .card-content > p {
+    white-space:normal;
+} 
+.card-action {
+    border-radius: 0 0 12px 12px !important;
+    background-color: #FFE600 !important;
+    text-align:center;
+    cursor: pointer;
+}
+.card-action > a {
+    color: black !important;
+    font-size: 25px;
+    margin-right:0 !important;
+}
+
+nav {
+    background-color: #00D8EC;
+    height: 100px;
+}
+
+.sidemenu {
+    margin:0;
+}
+.sidemenu-item {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 25px;
+    font-size: 18pt;
+    background-color: #F0F0F0;
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    text-overflow: ellipsis !important;
+}
+.sidemenu > li {
+ 	transition:background-color 1s;   
+}
+.sidemenu > li.active {
+    background-color: #FFE600 !important;
+}
+.sidemenu > li.active > a {
+    background-color: #FFE600 !important;
+}
+.sidemenu > li:hover:not(.active) {
+    background-color: #D2D2D2 !important;                 
+}
+.sidemenu > li > a {
+    display: inline-flex;
+    align-items: center;
+}
+.sidemenu > li > a > span {
+    color: black !important;
+    margin-left: 10px;
+}
+
+.row > .col.s2 {
+    height: 100vh !important;
+    background-color: #F0F0F0;
+    padding:0 !important;
+}
+
+.row > .col.s10 {
+    padding-top: 20px;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+}
+
+.button.action-right {
+    position:absolute !important;
+    right: 5% !important;
+    background-color: #00D8EC !important;
+    border:0;
+    padding: 10px 40px 15px 40px;
+    font-size: 16pt;
+    border-radius: 15px;
+    font-family: 'Barlow Condensed', sans-serif;
+    transition: box-shadow 1s;
+}
+.button:hover {
+    box-shadow: 0px 10px 20px #009AA8;
+}
+
+table {
+    font-size: 15pt;
+}
+thead {
+    background-color: #FFE600;
+}
+th {
+    padding-left:30px;
+}
+td {
+    padding-left: 30px;
+}
+
+.btn-large {
+    width: 100%;
+    border-radius: 15px;
+    font-size: 18pt;
+}
+
+#messageBox {
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgb(255, 132, 123) !important;
+    border-radius: 12px;
+}
