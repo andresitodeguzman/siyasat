@@ -112,7 +112,11 @@ $(document).ready(()=>{
     s.setBrowser().then(()=>{
         s.browser.storage.local.get(['user'],res=>{
             if(!res.user) window.location.replace("../account/login.html");
-            $(".first_name").html(res.user.first_name);
+            $(".info.first_name").html(res.user.first_name);
+            $(".info.last_name").html(res.user.last_name);
+            $(".info.email").html(res.user.email);
+            $(".info.country").html(res.user.country);
+            $(".info.username").html(res.user.username);
         });
     });
 

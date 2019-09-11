@@ -26,7 +26,10 @@ var render = ()=>{
 document.addEventListener('click',e=>{
     if(e.target.dataset.action == "deleteOrganization"){
         id = e.target.dataset.id;
-        actions.organization.local.remove(id);
-        render();
+        actions.organization.local.remove(id).then(()=>{
+            $("#organizationList").hide();
+            render();
+            $("#organizationList").fadeIn();
+        });
     }
-})
+});
