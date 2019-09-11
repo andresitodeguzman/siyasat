@@ -80,6 +80,19 @@ const actions =  {
                         })
                     });
                 });
+            },
+            remove(id){
+                return new Promise((resolve,reject)=>{
+                    s.browser.storage.local.get(['local-organization'],result=>{
+                        if(result['local-organization']){
+                            var ar = result['local-organization'];
+                            ar = ar.filter(obj=>{ if(obj.id !== id) return id; });
+                            s.browser.storage.local.set({'local-organization':ar},()=>{
+                                resolve(ar);
+                            });
+                        }
+                    });
+                });
             }
         }
 
