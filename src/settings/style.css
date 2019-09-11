@@ -38,6 +38,8 @@ nav {
 
 .sidemenu {
     margin:0;
+    height: 100% !important;
+
 }
 .sidemenu-item {
     padding-top: 10px;
@@ -70,9 +72,11 @@ nav {
     color: black !important;
     margin-left: 10px;
 }
-
+.row {
+    margin:0;
+}
 .row > .col.s2 {
-    height: 100vh !important;
+    height: 120vh !important;
     background-color: #F0F0F0;
     padding:0 !important;
 }

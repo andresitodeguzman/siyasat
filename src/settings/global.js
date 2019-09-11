@@ -105,6 +105,57 @@ const actions =  {
             }
         }
 
+    },
+
+    whitelist:{
+        local: {
+            listAll(){
+                return new Promise((resolve,reject)=>{
+                    s.browser.storage.local.get(['local-whitelist'],result=>{
+                        if(result['local-whitelist']){
+                            resolve(result['local-whitelist']);
+                        } else {
+                            resolve([]);
+                        }
+                    })
+                });
+            },
+            add(obj){
+                return new Promise((resolve,reject)=>{                    
+                    s.browser.storage.local.get(['local-whitelist'],result=>{
+                        function e1() {
+                            var u='',i=0;
+                            while(i++<36) {
+                              var c='xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'[i-1],r=Math.random()*16|0,v=c=='x'?r:(r&0x3|0x8);
+                              u+=(c=='-'||c=='4')?c:v.toString(16)
+                            }
+                            return u;
+                        };
+
+                        var ar = [];
+                        if(result['local-organization']) ar = result['local-whitelist'];
+                        obj['id'] = e1();
+                        ar.push(obj);
+                        s.browser.storage.local.set({'local-whitelist':ar},()=>{
+                            resolve(ar);
+                        })
+                    });
+                });
+            },
+            remove(id){
+                return new Promise((resolve,reject)=>{
+                    s.browser.storage.local.get(['local-whitelist'],result=>{
+                        if(result['local-whitelist']){
+                            var ar = result['local-whitelist'];
+                            ar = ar.filter(obj=>{ if(obj.id !== id) return id; });
+                            s.browser.storage.local.set({'local-whitelist':ar},()=>{
+                                resolve(ar);
+                            });
+                        }
+                    });
+                });
+            }
+        }
     }
 }
 
