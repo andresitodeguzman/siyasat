@@ -1,17 +1,16 @@
 $(document).ready(()=>{
-    actions.organization.getAll().then(orgs=>{
-        orgs.forEach(obj=>{
-            var tpl = `
-             <tr>
-                 <td>${obj.name}</td>
-                 <td>${obj.region}</td>
-                 <td>
-                     <a class="black-text" href="#!"><i class="material-icons">add</i> Add</a>
-                 </td>
-             </tr>
-             `;
-            $("#orgList").append(tpl);
-        }); 
-    })
-
+    actions.organization.local.listAll().then(orgs=>{
+            orgs.forEach(org=>{
+                var tpl = `
+                    <tr>
+                        <td>${org.name}</td>
+                        <td>${org.region}</td>
+                        <td>
+                            <a href="#!" class="red-text"><i class="material-icons">delete</i></a>
+                        </td>
+                    </tr>
+                `;
+                $("#organizationList").append(tpl);
+            });
+    });
 });

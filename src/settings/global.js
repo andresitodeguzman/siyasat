@@ -42,13 +42,18 @@ const actions =  {
             });
         },
 
-        get(){
+        get(id){
             return new Promise((resolve,reject)=>{
                 s.browser.storage.local.get(['organization'],result=>{
-                    
-                }).catch(e=>{
-                    reject(e);
+                    console.log(result);
+                    if(result.organization){
+                        resolve(result.organization.filter(obj=>{ if(id == result.organization.id) return obj; }));
+                    } else {
+                        reject({});
+                    }
                 });
+            }).catch(e=>{
+                reject(e);
             });
         },
 
@@ -57,15 +62,24 @@ const actions =  {
                 return new Promise((resolve,reject)=>{
                     s.browser.storage.local.get(['local-organization'],result=>{
                         if(result['local-organization']){
-                            return result['local-organization'];
+                            resolve(result['local-organization']);
                         } else {
-                            return [];
+                            resolve([]);
                         }
                     });
                 });
             },
-            add(id){
-
+            add(obj){
+                return new Promise((resolve,reject)=>{
+                    s.browser.storage.local.get(['local-organization'],result=>{
+                        var ar = [];
+                        if(result['local-organization']) ar = result['local-organization'];
+                        ar.push(obj);
+                        s.browser.storage.local.set({'local-organization':ar},()=>{
+                            resolve(ar);
+                        })
+                    });
+                });
             }
         }
 
