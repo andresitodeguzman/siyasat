@@ -41,7 +41,7 @@ class Account {
         $stmt = $this->mysqli->prepare("SELECT * FROM `account` WHERE id=? LIMIT 1");
         $stmt->bind_param("i",$id);
         $stmt->execute();
-        $stmt->bind_result($id,$first_name,$last_name,$email,$country,$username,$password,$is_blocked,$account_type,$timestamp_created);
+        $stmt->bind_result($id,$first_name,$last_name,$country,$email,$username,$password,$is_blocked,$account_type,$timestamp_created);
         $stmt->fetch();
 
         $array = array();

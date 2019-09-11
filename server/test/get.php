@@ -1,9 +1,9 @@
 <?php
 require_once("../_system/keys.php");
 require_once("../_system/connection.php");
-require_once("../class/Siyasat/Organization.class.php");
+require_once("../class/Siyasat/Account.class.php");
 
-$obj = new Siyasat\Organization($mysqli);
+$obj = new Siyasat\Account($mysqli);
 /*echo json_encode($obj->add(array(
     "name"=>"Rappler",
     "short_name"=>"rappler",
@@ -13,6 +13,6 @@ $obj = new Siyasat\Organization($mysqli);
     "region"=>"NCR"
 )));*/
 
-echo json_encode($obj->getAll());
+echo json_encode($obj->get(2));
 
 ?>
