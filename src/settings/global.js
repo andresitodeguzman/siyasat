@@ -133,7 +133,7 @@ const actions =  {
                         };
 
                         var ar = [];
-                        if(result['local-organization']) ar = result['local-whitelist'];
+                        if(result['local-whitelist']) ar = result['local-whitelist'];
                         obj['id'] = e1();
                         ar.push(obj);
                         s.browser.storage.local.set({'local-whitelist':ar},()=>{
