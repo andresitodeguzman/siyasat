@@ -110,3 +110,16 @@ th {
 td {
     padding-left: 30px;
 }
+
+#messageBox {
+    font-size: 15pt;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgb(255, 244, 145) !important;
+    border-radius: 12px;
+    display:none;
+}

@@ -12,7 +12,7 @@ var render = ()=>{
                     <td>${org.name}</td>
                     <td>${org.region}</td>
                     <td>
-                        <a class="red-text delete">
+                        <a class="red-text delete" href="#!">
                             <i data-action="deleteOrganization" data-id="${org.id}" class="material-icons">delete</i>
                         </a>
                     </td>

@@ -12,6 +12,15 @@ const s = {
     }
 }
 
+const ui = {
+    message: {
+        show(msg){
+            $("#messageBoxContent").html(msg);
+            $("#messageBox").slideDown();        
+        }
+    }
+}
+
 const data  = {
     url: {
         organization: {
