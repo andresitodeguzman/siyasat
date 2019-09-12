@@ -19,37 +19,6 @@ data.blocklist = [
     }
 ];
 
-data.contextMenu = [{
-        id: "report_link",
-        title: "Report Link",
-        contexts: ["link"],
-        child: [
-            {
-                id: "report_link_a",
-                title: "Misleading"
-            },
-            {
-                id: "report_link_b",
-                title: "Scam"
-            }
-        ]
-	},
-	{
-    	id:"search_news",
-        title:"",
-        contexts:[""],
-        child:[]
-    },
-    {
-        id: "fact_check",
-        title: "Fact Check",
-        context: ["selection"],
-        child: [
-
-        ]
-    }
-];
-
 const s = {
 
     browser: chrome,
@@ -124,74 +93,41 @@ s.browser.contextMenus.create({
 
 var submenuCreation = (parent_id, contexts, array) => {
     array.map(obj => {
+        obj.title = obj.name;        
         obj.parentId = parent_id;
         obj.contexts = contexts;
+        obj.onclick = (info,tab)=>{
+            s.browser.tabs.create({
+                url: `${obj.url}${encodeURIComponent(info.selectionText)}`,
+                active: true
+            })
+        };
+        delete obj.short_name;
+        delete obj.category;
+        delete obj.color;
+        delete obj.text_color;
+        delete obj.timestamp_created;
+        delete obj.timestamp_modified;
+        delete obj.region;
+        delete obj.icon;
+        delete obj.name;
+        delete obj.url;
         return obj;
     })
     array.forEach(obj => {
-        s.browser.contextMenus.create(obj);
+        try {
+            s.browser.contextMenus.create(obj);
+            console.log(obj);
+        } catch(e){
+            console.error(e);
+        }
     })
 }
 
-submenuCreation("fact_check", ["selection"], [{
-        id: "fact_check_verafiles",
-        title: "Check with Vera Files",
-        onclick: (info, tab) => {
-            s.browser.tabs.create({
-                url: `https://verafiles.org/results?query=${encodeURIComponent(info.selectionText)}`,
-                active: true
-            })
-        }
-    },
-    {
-        id: "fact_check_rappler",
-        title: "Check with Rappler",
-        onclick: (info, tab) => {
-            s.browser.tabs.create({
-                url: `https://www.rappler.com/?option=com_rappler&task=search&language=english&q=${encodeURIComponent(info.selectionText)}`,
-                active: true
-            })
-        }
-    },
-	{
-        id: "fact_check_snopes",
-        title: "Check with Snopes",
-        onclick: (info, tab) => {
-            s.browser.tabs.create({
-                url: `https://www.snopes.com/?s=${encodeURIComponent(info.selectionText)}`,
-                active: true
-            })
-        }
-    },
-	{
-        id: "fact_check_ap",
-        title: "Check with Associated Press",
-        onclick: (info, tab) => {
-            s.browser.tabs.create({
-                url: `https://www.ap.org/en-us/search?q=${encodeURIComponent(info.selectionText)}`,
-                active: true
-            })
-        }
-    },
-	{
-        id: "fact_check_factcheckorg",
-        title: "Check with FactCheck.org",
-        onclick: (info, tab) => {
-            s.browser.tabs.create({
-                url: `https://www.factcheck.org/search/?q=${encodeURIComponent(info.selectionText)}`,
-                active: true
-            })
-        }
-    },
-    {
-        id: "fact_check_politifact",
-        title: "Check with PolitiFact",
-        onclick: (info, tab) => {
-            s.browser.tabs.create({
-                url: `https://www.politifact.com/search/?q=${encodeURIComponent(info.selectionText)}`,
-                active: true
-            })
-        }
+s.browser.storage.local.get(['local-organization'],res=>{
+    if(res['local-organization']){
+        submenuCreation("fact_check", ["selection"],res['local-organization']);
     }
-]);
+});
+
 
