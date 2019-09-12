@@ -13,6 +13,6 @@ $obj = new Siyasat\Account($mysqli);
     "region"=>"NCR"
 )));*/
 
-echo json_encode($obj->get(2));
+echo json_encode($obj->get(1));
 
 ?>

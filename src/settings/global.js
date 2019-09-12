@@ -168,6 +168,7 @@ $(document).ready(()=>{
             $(".info.email").html(res.user.email);
             $(".info.country").html(res.user.country);
             $(".info.username").html(res.user.username);
+            $("#email").val(res.user.email);
         });
     });
 
