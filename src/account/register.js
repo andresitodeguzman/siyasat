@@ -60,7 +60,7 @@ $("#registerButton").click(()=>{
                                             res = JSON.parse(res);
                                             if(res.result == true){
                                                 s.browser.storage.local.set({'user':res.user},()=>{
-                                                    window.location.replace("../settings/index.html");
+                                                    window.location.replace("./onboarding.html");
                                                 });
                                             } else {
                                                 ui.input.enable();
