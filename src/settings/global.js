@@ -108,7 +108,6 @@ const actions =  {
                             var ar = result['local-organization'];
                             ar = ar.filter(obj=>{ if(obj.id !== id) return id; });
                             s.browser.storage.local.set({'local-organization':ar},()=>{
-                                s.browser.contextMenus.remove(id);
                                 resolve(ar);
                             });
                         }

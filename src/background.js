@@ -93,12 +93,13 @@ s.browser.contextMenus.create({
 
 var submenuCreation = (parent_id, contexts, array) => {
     array.map(obj => {
+        var url = obj.url;
         obj.title = obj.name;        
         obj.parentId = parent_id;
         obj.contexts = contexts;
         obj.onclick = (info,tab)=>{
             s.browser.tabs.create({
-                url: `${obj.url}${encodeURIComponent(info.selectionText)}`,
+                url: `${url}${encodeURIComponent(info.selectionText)}`,
                 active: true
             })
         };
