@@ -85,6 +85,17 @@ const actions =  {
                         if(result['local-organization']) ar = result['local-organization'];
                         ar.push(obj);
                         s.browser.storage.local.set({'local-organization':ar},()=>{
+                            s.browser.contextMenus.create({
+                                "parent_id":"fact_check",
+                                "contexts":["selection"],
+                                "title":obj.title,
+                                "onclick": (info,tab)=>{
+                                    s.browser.tabs.create({
+                                        url: `${obj.url}${encodeURIComponent(info.selectionText)}`,
+                                        active: true
+                                    });
+                                }
+                            });
                             resolve(ar);
                         })
                     });
@@ -97,6 +108,7 @@ const actions =  {
                             var ar = result['local-organization'];
                             ar = ar.filter(obj=>{ if(obj.id !== id) return id; });
                             s.browser.storage.local.set({'local-organization':ar},()=>{
+                                s.browser.contextMenus.remove(id);
                                 resolve(ar);
                             });
                         }
@@ -178,3 +190,4 @@ $("#logoutButton").click(()=>{
     s.browser.storage.local.clear();
     window.location.replace("../account/login.html");
 });
+

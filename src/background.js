@@ -131,3 +131,18 @@ s.browser.storage.local.get(['local-organization'],res=>{
 });
 
 
+s.browser.storage.onChanged.addListener((changes,location)=>{
+    if(location == "local"){
+        s.browser.contextMenus.remove("fact_check");
+        s.browser.contextMenus.create({
+            id: "fact_check",
+            title: "Fact Check",
+            contexts: ["selection"]
+        });
+        s.browser.storage.local.get(['local-organization'],res=>{
+            if(res['local-organization']){
+                submenuCreation("fact_check", ["selection"],res['local-organization']);
+            }
+        })
+    }
+})
