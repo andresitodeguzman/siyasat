@@ -14,9 +14,9 @@ const s = {
 
 const data = {
     url: {
-        login:"http://localhost:8080/api/account/authenticate.php",
+        login:"https://siyasat-ph.000webhostapp.com/api/account/authenticate.php",
         forgotPassword:"https://google.com",
-        register:"http://localhost:8080/api/account/add.php"
+        register:"https://siyasat-ph.000webhostapp.com/api/account/add.php"
     }
 };
 

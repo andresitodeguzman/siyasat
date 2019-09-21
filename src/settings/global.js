@@ -24,7 +24,7 @@ const ui = {
 const data  = {
     url: {
         organization: {
-            all:"http://localhost:8080/api/organization/getAll.php"
+            all:"https://siyasat-ph.000webhostapp.com/api/organization/getAll.php"
         }
     },
 
